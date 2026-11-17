@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: order-multiagent-config
 data:
-  ORDERS_PARQUET_URI: "s3://warehouse/raw/stud12/**/*.parquet"
+  ORDERS_PARQUET_URI: "s3://warehouse/raw/stud03/**/*.parquet"
   S3_ENDPOINT: "https://aistor-server.aistor-server.svc.cluster.local:443"
   S3_VERIFY_SSL: "false"
   S3_REGION: "us-east-1"
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: yklee2002/order-multiagent:76bf6b26b21b8a31f36ecb69546c0259c523a4de
+        image: chaewon223/order-multiagent
         imagePullPolicy: Always
 
         ports:
