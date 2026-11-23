@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: chaewon223/order-multiagent:d7fea24fc670671834c0095f9363dccf4dc489c8
+        image: chaewon223/order-multiagent:b6a2a9510cd8359d899b5c62a1b30f05da61ad70
         imagePullPolicy: Always
 
         ports:
