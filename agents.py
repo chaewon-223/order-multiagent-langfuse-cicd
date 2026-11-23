@@ -25,11 +25,11 @@ def manager(state: AnalysisState):
     return {'selected': route['agents'], 'days': route['days'],
            'results': {}, 'charts': [], 'customer_name': route.get('customer_name', ''), 'trace': ['manager → ' + ', '.join(route['agents'])]}
 
-
+@observe(name="after_manager", capture_input=False)
 def after_manager(state):
     return 'product_agent' if 'product' in state['selected'] else 'customer_agent'
 
-
+@observe(name="product_agent", capture_input=False)
 def product_agent(state: AnalysisState):
     result = fetch_series('product', state['days'])
     return {'results': {**state['results'], 'product': result},
@@ -37,10 +37,12 @@ def product_agent(state: AnalysisState):
             'trace': state['trace'] + ['product_agent']}
 
 
+@observe(name="after_product", capture_input=False)
 def after_product(state):
     return 'customer_agent' if 'customer' in state['selected'] else 'summarize'
 
 
+@observe(name="customer_agent", capture_input=False)
 def customer_agent(state: AnalysisState):
     result = fetch_series('customer', state['days'])
     # Customer IDs are taken only from the top-5 aggregated Parquet rows.
