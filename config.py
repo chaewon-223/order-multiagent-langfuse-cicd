@@ -1,6 +1,6 @@
 import os
 
-ORDERS_URI = os.getenv('ORDERS_PARQUET_URI', 's3://warehouse/raw/stud12/**/*.parquet')
+ORDERS_URI = os.getenv('ORDERS_PARQUET_URI', 's3://warehouse/raw/stud03/**/*.parquet')
 S3_ENDPOINT = os.getenv('S3_ENDPOINT', 'https://aistor-server.aistor-server.svc.cluster.local:443')
 S3_KEY = os.getenv('S3_ACCESS_KEY', 'admin')
 S3_SECRET = os.getenv('S3_SECRET_KEY', 'admin1234')
